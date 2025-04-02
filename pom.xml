@@ -1,12 +1,34 @@
-<project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>parent</artifactId>
-    <version>1.0</version>
-    <packaging>pom</packaging>
 
+    <!-- Наследуемся от Spring Boot -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.4</version>
+        <relativePath/> <!-- Ищем в репозитории -->
+    </parent>
+
+    <!-- Наши настройки -->
+    <groupId>eman</groupId>
+    <artifactId>weather-app-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>  <!-- Важно: тип родителя -->
+    <name>weather-app-parent</name>
+    <description>Родительский POM для weather-app</description>
+
+    <!-- Список модулей -->
     <modules>
-        <module>app</module>
-        <module>curl-test</module>
-        <module>mountebank</module>
+        <module>app</module>          <!-- Основное приложение -->
+        <module>curl-test</module>    <!-- Модуль с curl-тестами -->
     </modules>
+
+    <!-- Общие свойства (опционально) -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>17</java.version>
+    </properties>
 </project>
