@@ -22,8 +22,9 @@
 
     <!-- Список модулей -->
     <modules>
-        <module>app</module>          <!-- Основное приложение -->
-        <module>curl-test</module>    <!-- Модуль с curl-тестами -->
+        <module>app</module>
+        <module>curl-test</module>
+        <module>mountebank</module>
     </modules>
 
     <!-- Общие свойства (опционально) -->
