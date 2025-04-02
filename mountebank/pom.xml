@@ -11,10 +11,50 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <mountebank.version>2.8.0</mountebank.version>
+    </properties>
+
     <artifactId>mountebank</artifactId>
     <name>montebank</name>
     <description>Модуль с montebank тестами</description>
 
     <!-- Тип модуля: pom (не jar, так как нет Java-кода) -->
     <packaging>pom</packaging>
+
+    <dependencies>
+        <!-- JUnit 5 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.9.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.github.tomakehurst</groupId>
+            <artifactId>mountebank</artifactId>
+            <version>${mountebank.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- HTTP Client -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.13</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>eman</groupId>
+            <artifactId>mountebank</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
 </project>

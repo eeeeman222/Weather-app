@@ -1,0 +1,77 @@
+{
+  "imposters": [
+    {
+      "port": 8081,
+      "protocol": "http",
+      "name": "gismeteo-main",
+      "stubs": [
+        {
+          "predicates": [{
+            "equals": {
+              "method": "GET",
+              "path": "/",
+              "query": { "latitude": "55.7558", "longitude": "37.6176" }
+            }
+          }],
+          "responses": [{
+            "is": {
+              "statusCode": 200,
+              "headers": { "Content-Type": "application/json" },
+              "body": {
+                "temperature": { "air": { "celsius": 22.5 } },
+                "humidity": 65
+              }
+            }
+          }]
+        },
+        {
+          "predicates": [{
+            "equals": {
+              "method": "GET",
+              "path": "/",
+              "query": { "latitude": "0", "longitude": "0" }
+            }
+          }],
+          "responses": [{
+            "is": {
+              "statusCode": 500,
+              "body": { "error": "Internal server error" }
+            }
+          }]
+        },
+        {
+          "predicates": [{
+            "matches": {
+              "path": "/",
+              "query": { "latitude": "^\\d+\\.\\d+$", "longitude": "^\\d+\\.\\d+$" }
+            }
+          }],
+          "responses": [{
+            "is": {
+              "statusCode": 200,
+              "body": {
+                "temperature": { "air": { "celsius": 18.0 } }
+              }
+            }
+          }]
+        }
+      ]
+    },
+    {
+      "port": 8082,
+      "protocol": "http",
+      "name": "gismeteo-fallback",
+      "stubs": [{
+        "responses": [{
+          "is": {
+            "statusCode": 200,
+            "body": {
+              "temp": { "value": 20.1, "unit": "C" },
+              "valid": true
+            }
+          }
+        }]
+      }]
+    }
+  ]
+}
